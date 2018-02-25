@@ -1,18 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+<style> 
+input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border:2px solid rgb(100,100,200);
+    border-radius:15px;
+}
+h1{
+    color:rgb(0,200,0);
+    font-family:cursive;
+    text-align:center;
+}
+input[type=reset]{
+    background-color:rgb(0,170,0);
+    width:50%;
+    margin:15px 0;
+    box-sizing:border-bex;
+    border:4px solid green;
+    border-radius:10px;
+    height:50px;
+    color:white;
+    font-family:"Times New Roman";
+}
+</style>
+</head>
+<body>
+<h1><u>Temperature Converter</u></h1>
+<form>
+  <input type="number" id="celcius" name="celcius" oninput=cel(this.value) placeholder="Celcius">
+  <input type="number" id="fahrenheit" name="fahrenheit" placeholder="Fahrenheit" oninput=fahr(this.value)>
+  <input type="number" id="kelvin" name="kelvin" placeholder="Kelvin" oninput=kel(this.value)>
+  <center><input type="reset" id="rst" name="rst" value="Reset All!"></center>
+</form>
+<script>
+    var c = document.getElementById("celcius");
+    var f = document.getElementById("fahrenheit");
+    var k = document.getElementById("kelvin");
+    function cel(){
     
-        <title>Tyranx</title>
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    </head>
-    <body>
-        <div class="w3-container w3-teal">
-  <h1>Header</h1>
-</div>
-
-<div class="w3-container">
-  <p>The w3-container class can be used to display headers.</p>
-</div>
-
-    </body>
+        f.value = Math.round(((c.value*1.8) + 32)*100)/100;
+        
+        k.value = parseInt(c.value)+273.15;
+    }
+    function fahr(){
+        c.value = Math.round(((f.value-32)/1.8)*100)/100;
+        k.value = Math.round((((f.value-32)/1.8+273.15))*100)/100;
+    }
+    function kel(){
+        c.value = Math.round((k.value-273.15)*100)/100;
+        f.value = Math.round((9/5 * ((parseInt(k.value)) - 273) + 32)*100)/100;
+    }
+    
+</script>
+</body>
 </html>
